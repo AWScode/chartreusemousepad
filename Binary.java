@@ -26,33 +26,39 @@ public class Binary{
       }*/
     public static String[] add(String[] e, String[] f){ //adds two arrays
       String[] sum = new String[8];
-      int carry = 0;
-      for(int i =0; i<8;i++){
-        if(carry==0){
-          if(e[i].equals("1")&&f[i].equals("1")){
-            carry = 1;
-            sum[i]= 0;
+      int car = 0;
+      for(int i = 7; i>-1; i--){
+        if(car==0){
+          if(e[i].equals("1")||f[i].equals("1")){
+            sum[i]="0";
+            car=1;
           }
-          if(e[i].equals("1")&&f[i].equals("0")||(e[i].equals("0")&&f[i].equals("1"))){
-            sum[i]=1;
+          if((e[i].equals("1")&&f[i].equals("0"))||(e[i].equals("0")&&f[i].equals("1"))){
+            sum[i]="1";
+            car=0;
           }
-          else{sum[i]="0";}
+          else{
+            sum[i]="0";
+            car=0;
+          }
         }
         else{
-          if(e[i].equals("1")&&f[i].equals("1")){
-            carry = 1;
-            sum[i]= 1;
+          if(e[i].equals("1")||f[i].equals("1")){
+            sum[i]="1";
+            car=1;
           }
-          if(e[i].equals("1")&&f[i].equals("0")||(e[i].equals("0")&&f[i].equals("1"))){
-            carry = 1;
-            sum[i]= 0;
+          if((e[i].equals("1")&&f[i].equals("0"))||(e[i].equals("0")&&f[i].equals("1"))){
+            sum[i]="0";
+            car=1;
           }
-          else{sum[i]="1";}
+          else{
+            sum[i]="1";
+            car=0;
         }
-
+        }
       }
       return sum;
-  }*/
+    }
   /*
     public static String subtract(){}
     public static String multiply(){}
@@ -63,26 +69,30 @@ public class Binary{
         Scanner scannn = new Scanner(System.in);
         String c = scannn.nextLine();
 
-
         System.out.println("Please enter the first number.");
         Scanner scan = new Scanner(System.in);
+        String a = scan.nextLine();
 
         System.out.println("Now enter the second number.");
         Scanner scann = new Scanner(System.in);
+        String b = scann.nextLine();
 
-        String[] num1 = sort(scan.nextLine());//inputs entered numbers into sort method to put in right format
-        String[] num2 = sort(scann.nextLine());
+        String[] num1 = sort(a);//inputs entered numbers into sort method to put in right format
+        String[] num2 = sort(b);
+
+        System.out.println(Arrays.toString(num1));
+        System.out.println(Arrays.toString(num2));
+
 
         if(num1[0].equals("-1")||num2[0].equals("-1")){//prints invalid number if the number is invalid
           System.out.println("Invalid number.");
         }
 
-
-
-
         if(c.equals("add")){
           String[] sum = add(num1,num2);
+          System.out.println(Arrays.toString(sum));
         }
+        else{System.out.println("no");}
 }
         /*if (c.equals("subtract")){
           subtract(num2);
