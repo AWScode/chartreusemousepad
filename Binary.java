@@ -27,11 +27,11 @@ public class Binary{
             sum[i]="0";
             car=true;
           }
-          if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){//0+1+0=01
+          else if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){//0+1+0=01
             sum[i]="1";
             car=false;
           }
-          if(e[i].equals("0") && f[i].equals("0")){//0+0+0=00
+          else if(e[i].equals("0") && f[i].equals("0")){//0+0+0=00
             sum[i]="0";
             car=false;
           }
@@ -41,7 +41,7 @@ public class Binary{
             sum[i]="1";
             car=true;
           }
-          if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){//1+1+0=10
+          else if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){//1+1+0=10
             sum[i]="0";
             car=true;
           }
@@ -56,7 +56,7 @@ public class Binary{
 
     public static String[] subtract(String[] s,String[] t){//a method for subtraction
       String[] neg = new String[8];// an array to hold inverted number
-      for(int i= 0; i<9; i++){//inverts t
+      for(int i= 7; i>-1; i--){//inverts t
         if(t[i].equals("0")){
           neg[i]="1";
         }
@@ -78,55 +78,67 @@ public class Binary{
       String[] f = new String[8];
       String[] g = new String[8];
       String[] h = new String[8];
-      for(int i = 0; i<9; i++){
-        if(m[i].equals("1")&&i==0){ // assigns values to each array if m[i] has value
-          a[i]=m[i];
+      for(int i = 0; i<8; i++){
+        if(m[i].equals("1") && i==0){
+          a=n;
         }
-        if(m[i].equals("1")&&i==1){
-          b=m;
-        }
-        if(m[i].equals("1")&&i==2){
-          c=m;
-        }
-        if(m[i].equals("1")&&i==3){
-          d=m;
-        }
-        if(m[i].equals("1")&&i==4){
-          e=m;
-        }
-        if(m[i].equals("1")&&i==5){
-          f=m;
-        }
-        if(g[i].equals("1")&&i==6){
-          g=m;
-        }
-        if(h[i].equals("1")&&i==7){
-          h=m;
-        }
-        else{ //assigns an array of 0 if m[i] is 0 using sort method
-          if(i==0){
-            a = sort("0");
+        if(m[i].equals("1") && i==1){
+          b[7]="0";
+          for(int i = 0; i<7; i++){
+            b[i]=n[i+1];
           }
-          if(i==1){
-            b = sort("0");
+        }
+        if(m[i].equals("1") && i==2){
+          c[7]="0";
+          c[6]="0";
+          for(int i = 0; i<6; i++){
+            c[i]=n[i+2];
           }
-          if(i==2){
-            c = sort("0");
+        }
+        if(m[i].equals("1") && i==3){
+          d[7]="0";
+          d[6]="0";
+          d[5]="0";
+          for(int i = 0; i<5; i++){
+            d[i]=n[i+3];
           }
-          if(i==3){
-            d = sort("0");
+        }
+        if(m[i].equals("1") && i==4){
+          e[7]="0";
+          e[6]="0";
+          e[5]="0";
+          e[4]="0";
+          for(int i = 0; i<4; i++){
+            e[i]=n[i+1];
           }
-          if(i==4){
-            e = sort("0");
+        }
+        if(m[i].equals("1") && i==5){
+          for(int i = 5; i<8; i++){
+            f[i-5]=n[i];
           }
-          if(i==5){
-            f = sort("0");
+          for(int i = 0; i<3; i++){
+            f[i]=n[i+1];
           }
-          if(i==6){
-            g = sort("0");
+        }
+        if(m[i].equals("1") && i==6){
+          for(int i = 6; i<8; i++){
+            g[i-5]=n[i];
           }
-          if(i==7){
-            h = sort("0");
+          g[0]=n[6];
+          g[1]=n[7];
+          }
+        if(m[i].equals("1") && i==6){
+          for(int i = 6; i<8; i++){
+            h[i-5]=n[i];
+          }
+        }
+      }
+
+        if(m[i].equals("1") && i==7){
+          h[7]
+          h[1]
+          for(int i = 1; i<7; i++){
+            h[i]="0";
           }
         }
       }
@@ -143,16 +155,15 @@ public class Binary{
     public static String[] divide(String[] q, String[] r){//divides an array
       String[] quotient = sort("0");//currently empty, eventually holds the answer using sort method
       String[] plus1 = sort("1");////makes an array of {0,0,0,0,0,0,0,1}b = 1d using sort method
-      String[] change = q;//currently = q, will hold the changing number that will be subtracted from
+      String[] change = q;//currently = q, will hold the changing number that will be divided from
       String yeet = ""; //will hold answer in string form
-      for(int i = 7; i>-1; i--){
-        if(change[0].equals("0")){
-          change = subtract(change, r);//using subtract method
-          quotient= add(quotient, plus1);//using add method
-        }
+      while(change[0].equals("0")){
+        change = subtract(change, r);//using subtract method
+        quotient= add(quotient, plus1);//using add method
       }
-      for(int i = 0; i<9; i++){//converts answer into string form
-        yeet= yeet+quotient[i];
+      quotient = subtract(quotient, plus1);
+      for(int i = 7; i>-1; i--){//converts answer into string form
+        yeet= quotient[i]+yeet;
       }
       return sort(yeet);//returns the answer as a complete array using sort method
     }
