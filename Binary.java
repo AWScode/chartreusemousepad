@@ -22,32 +22,32 @@ public class Binary{
       String[] sum = new String[8];//will hold the sum
       boolean car = false;//the carry ad a boolean
       for(int i = 7; i>-1; i--){//starting from the front of the number
-        if(car == false){//a case for no carry
-          if(e[i].equals("1") && f[i].equals("1")){//0+1+1=10
-            sum[i]="0";
-            car=true;
+        if(car==false){
+          if(e[i].equals("1") && f[i].equals("1")){
+            sum[i] = "0";
+            car = true;
           }
-          else if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){//0+1+0=01
-            sum[i]="1";
-            car=false;
+          else if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){
+            sum[i] = "1";
+            car = false;
           }
-          else if(e[i].equals("0") && f[i].equals("0")){//0+0+0=00
-            sum[i]="0";
-            car=false;
+          else{
+            sum[i] = "0";
+            car = false;
           }
         }
-        else{//a case with a carry
-          if(e[i].equals("1") && f[i].equals("1")){//1+1+1+=11
-            sum[i]="1";
-            car=true;
+        else{
+          if(e[i].equals("1") && f[i].equals("1")){
+            sum[i] = "1";
+            car = true;
           }
-          else if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){//1+1+0=10
-            sum[i]="0";
-            car=true;
+          else if((e[i].equals("1") && f[i].equals("0")) || (e[i].equals("0") && f[i].equals("1"))){
+            sum[i] = "0";
+            car = true;
           }
-          else{//1+0+0=01
-            sum[i]="1";
-            car=false;
+          else{
+            sum[i] = "1";
+            car = false;
           }
         }
       }
@@ -78,67 +78,58 @@ public class Binary{
       String[] f = new String[8];
       String[] g = new String[8];
       String[] h = new String[8];
-      for(int i = 0; i<8; i++){
-        if(m[i].equals("1") && i==0){
-          a=n;
-        }
-        if(m[i].equals("1") && i==1){
-          b[7]="0";
-          for(int i = 0; i<7; i++){
-            b[i]=n[i+1];
-          }
-        }
-        if(m[i].equals("1") && i==2){
-          c[7]="0";
-          c[6]="0";
-          for(int i = 0; i<6; i++){
-            c[i]=n[i+2];
-          }
-        }
-        if(m[i].equals("1") && i==3){
-          d[7]="0";
-          d[6]="0";
-          d[5]="0";
-          for(int i = 0; i<5; i++){
-            d[i]=n[i+3];
-          }
-        }
-        if(m[i].equals("1") && i==4){
-          e[7]="0";
-          e[6]="0";
-          e[5]="0";
-          e[4]="0";
-          for(int i = 0; i<4; i++){
-            e[i]=n[i+1];
-          }
-        }
-        if(m[i].equals("1") && i==5){
-          for(int i = 5; i<8; i++){
-            f[i-5]=n[i];
-          }
-          for(int i = 0; i<3; i++){
-            f[i]=n[i+1];
-          }
-        }
-        if(m[i].equals("1") && i==6){
-          for(int i = 6; i<8; i++){
-            g[i-5]=n[i];
-          }
-          g[0]=n[6];
-          g[1]=n[7];
-          }
-        if(m[i].equals("1") && i==6){
-          for(int i = 6; i<8; i++){
-            h[i-5]=n[i];
-          }
-        }
-      }
 
-        if(m[i].equals("1") && i==7){
-          h[7]
-          h[1]
-          for(int i = 1; i<7; i++){
-            h[i]="0";
+      for(int i = 0; i<8; i++){
+        if(m[i]=="1"){//if m[i]==1, then m[i]*n= n, but when adding, the answer is shifted left
+          if(i==0){
+            a = n;
+          }
+          if(i==1){
+            b = new String[]{n[1],n[2],n[3],n[4],n[5],n[6],n[7],"0"};
+          }
+          if(i==2){
+            c = new String[]{n[2],n[3],n[4],n[5],n[6],n[7],"0","0"};
+          }
+          if(i==3){
+            d = new String[]{n[3],n[4],n[5],n[6],n[7],"0","0","0"};
+          }
+          if(i==4){
+            e = new String[]{n[4],n[5],n[6],n[7],"0","0","0","0"};
+          }
+          if(i==5){
+            f = new String[]{n[5],n[6],n[7],"0","0","0","0","0"};
+          }
+          if(i==6){
+            g = new String[]{n[6],n[7],"0","0","0","0","0","0"};
+          }
+          if(i==7){
+            h = new String[]{n[7],"0","0","0","0","0","0","0"};
+          }
+        }
+        else if (m[i].equals("0")){//if m[i]==0, then the array is 0
+          if(i==0){
+            a = sort("0");
+          }
+          if(i==1){
+            b = sort("0");
+          }
+          if(i==2){
+            c = sort("0");
+          }
+          if(i==3){
+            d = sort("0");
+          }
+          if(i==4){
+            e = sort("0");
+          }
+          if(i==5){
+            f = sort("0");
+          }
+          if(i==6){
+            g = sort("0");
+          }
+          if(i==7){
+            h = sort("0");
           }
         }
       }
