@@ -56,7 +56,7 @@ public class Binary{
       System.out.println(Arrays.toString(ans));
     }
   }
-  
+
     public static String[] sort(String d) { //outputs an array of 8 bits
       String[] str = new String[8];
       if(d.length()<9 && (d.contains("0") || d.contains("1"))) {//checks if it's a valid number
@@ -138,25 +138,25 @@ public class Binary{
          if(i==0){
            a = n;
          }
-         if(i==1){
+         else if(i==1){
            b = new String[]{n[1],n[2],n[3],n[4],n[5],n[6],n[7],"0"};
          }
-         if(i==2){
+         else if(i==2){
            c = new String[]{n[2],n[3],n[4],n[5],n[6],n[7],"0","0"};
          }
-         if(i==3){
+         else if(i==3){
            d = new String[]{n[3],n[4],n[5],n[6],n[7],"0","0","0"};
          }
-         if(i==4){
+         else if(i==4){
            e = new String[]{n[4],n[5],n[6],n[7],"0","0","0","0"};
          }
-         if(i==5){
+         else if(i==5){
            f = new String[]{n[5],n[6],n[7],"0","0","0","0","0"};
          }
-         if(i==6){
+         else if(i==6){
            g = new String[]{n[6],n[7],"0","0","0","0","0","0"};
          }
-         if(i==7){
+         else if(i==7){
            h = new String[]{n[7],"0","0","0","0","0","0","0"};
          }
        }
@@ -164,25 +164,25 @@ public class Binary{
          if(i==0){
            a = sort("0");
          }
-         if(i==1){
+         else if(i==1){
            b = sort("0");
          }
-         if(i==2){
+         else if(i==2){
            c = sort("0");
          }
-         if(i==3){
+         else if(i==3){
            d = sort("0");
          }
-         if(i==4){
+         else if(i==4){
            e = sort("0");
          }
-         if(i==5){
+         else if(i==5){
            f = sort("0");
          }
-         if(i==6){
+         else if(i==6){
            g = sort("0");
          }
-         if(i==7){
+         else if(i==7){
            h = sort("0");
          }
        }
