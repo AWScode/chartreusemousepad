@@ -30,8 +30,9 @@ public class Expenses{
   public ArrayList<Integer> getId(){
     return id;
   }
-  public int getIdLength(){
-    return id.size();
+  int num = id.size();
+  public void newId(){
+    id.add(id.size());
   }
   public static void main(String[] args){
     System.out.println("Welcome to Expense Tracker \n What would you like to do? Enter \"Add New Expense\" or \"View Expenses\".");
@@ -51,11 +52,11 @@ public class Expenses{
       Scanner scannnn = new Scanner(System.in);
       String amount = scannnn.nextLine();
 
-      id.add(getIdLength());
+      newID();
     }
 
     if(a.equals("View Expenses")){
-      for(int i = 0; i<id.length; i++){
+      for(int i = 0; i<id.size(); i++){
         System.println(getDate(i) + " " + getAddress(i) + " " + getAmount(i));
       }
     }
