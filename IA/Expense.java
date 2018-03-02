@@ -6,6 +6,7 @@ public class Expense{
   public ArrayList<String> date = new ArrayList<>();
   public ArrayList<String> amount = new ArrayList<>();
   public ArrayList<String> address = new ArrayList<>();
+  public static int count = 0;
   public void setExpense(ArrayList<ArrayList<String>> expense){
     this.expense = expense;
   }
@@ -33,6 +34,13 @@ public class Expense{
   public ArrayList<String> getAmount(){
     return amount;
   }
+  public ArrayList<String> addExpense(String date, String address, String amount, int count){
+    expense.get(0).add(date);
+    expense.get(1).add(address);
+    expense.get(2).add(date);
+    count++;
+    return expense;
+  }
   public static void main(String[] args){
     System.out.println("Welcome to Expense Tracker \n What would you like to do? Enter \"Add New Expense\" or \"View Expenses\".");
     Scanner scan = new Scanner(System.in);
@@ -41,24 +49,23 @@ public class Expense{
     if(a.equals("Add New Expense")){
       System.out.println("Enter the date.");
       Scanner scann = new Scanner(System.in);
-      date.add(scann.nextLine());
-      
+      String date = scann.nextLine();
 
       System.out.println("Enter the address.");
       Scanner scannn = new Scanner(System.in);
-      //String address = scannn.nextLine();
-      address.add(scannn.nextLine());
+      String address = scannn.nextLine();
 
       System.out.println("Enter the amount.");
       Scanner scannnn = new Scanner(System.in);
-      //String amount = scannnn.nextLine();
-      amount.add(scannnn.nextLine());
+      String amount = scannnn.nextLine();
 
+      Expense expenses = new Expense();
+
+      expenses.addExpense(date, address, amount, count);
     }
 
     if(a.equals("View Expenses")){
-      
+
       }
     }
 }
-  
