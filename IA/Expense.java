@@ -1,5 +1,6 @@
 import java.util.*;
 import java.lang.*;
+import java.awt.*;
 
 public class Expense{
   public ArrayList<ArrayList<String>> expense = new ArrayList<>();
@@ -34,12 +35,11 @@ public class Expense{
   public ArrayList<String> getAmount(){
     return amount;
   }
-  public ArrayList<String> addExpense(String date, String address, String amount, int count){
+  public String addExpense(String date, String address, String amount){
     expense.get(0).add(date);
     expense.get(1).add(address);
     expense.get(2).add(date);
-    count++;
-    return expense;
+    return expense.get(0).get(0) + " " + expense.get(1).get(0) + " " + expense.get(2).get(0);
   }
   public static void main(String[] args){
     System.out.println("Welcome to Expense Tracker \n What would you like to do? Enter \"Add New Expense\" or \"View Expenses\".");
@@ -60,12 +60,13 @@ public class Expense{
       String amount = scannnn.nextLine();
 
       Expense expenses = new Expense();
-
-      expenses.addExpense(date, address, amount, count);
+      expenses.addExpense(date, address, amount);
+      System.out.println(expenses.get(0).get(0) + " " + expenses.get(1).get(0) + " " + expenses.get(2).get(0));
+      System.out.println("New expense saved!");
     }
 
     if(a.equals("View Expenses")){
-
+      System.out.println(); //insert file name? or expense arrarlist?
       }
     }
 }
