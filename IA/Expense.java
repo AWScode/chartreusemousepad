@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.awt.*;
 
-public class Expense{
+public class Expense extends Frame implements ActionListener{
   public ArrayList<ArrayList<String>> expense = new ArrayList<>();
   public ArrayList<String> date = new ArrayList<>();
   public ArrayList<String> amount = new ArrayList<>();
@@ -68,5 +68,7 @@ public class Expense{
     if(a.equals("View Expenses")){
       System.out.println(); //insert file name? or expense arrarlist?
       }
-    }
-}
+  public Expense(){
+
+      }
+  }
