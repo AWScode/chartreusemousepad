@@ -46,16 +46,17 @@ public class Expense1{
       expense.get(1).add(amount);
       expense.get(2).add(address);
     }
-    public void save() throws FileNotFoundException {
+    public void save(int a) throws FileNotFoundException {
       try(FileWriter fw = new FileWriter("expenses.txt", true);
       BufferedWriter bw = new BufferedWriter(fw);
       PrintWriter out = new PrintWriter(bw)) {
-        out.println(expense.get(0) + " " + expense.get(1) + " " + expense.get(2));
+        out.println(expense.get(0).get(a) + " " + expense.get(1).get(a) + " " + expense.get(2).get(a));
       }
       catch (IOException e) {
         System.out.println("oh no");
       }
     }
+  
     public String checkFile(){
       File f = new File("c://downloads//expenses.txt");
       if(!f.exists()){
