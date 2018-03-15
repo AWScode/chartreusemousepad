@@ -5,8 +5,12 @@ import java.awt.event.*;
 public class SaveFrame extends JFrame{
   JFrame frame = new JFrame("New Expense Saved");
   JLabel lbl;
+  JButton home;
+  JButton close;
   MyListener listener;
   JPanel pnl;
+
+
 
   public SaveFrame(){
     setSize(800,300);
