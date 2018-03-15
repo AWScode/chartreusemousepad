@@ -4,39 +4,42 @@ import java.awt.event.*;
 
 public class MainFrame extends JFrame{
   JFrame mainFrame = new JFrame("Main Window");
-  JButton add_btn= new JButton("Add New Expense");
-  JButton view_btn= new JButton("View Expenses");
+  JButton add;
+  JButton view;
+  JPanel pnl;
 
   public MainFrame(){
     setTitle("Main Window");
-    setSize(800,300);
+    setSize(300,150);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
+    this.add = new JButton("Add New Expense");
+    this.view = new JButton("View Expenses");
+    this.pnl = new JPanel();
+  }
+  public void setPnl(){
+    pnl.add(add);
+    //add.addActionListener(listener);
+    pnl.add(view);
+    //view.addActionListener(listener);
   }
   public static void main(String[] args){
      MainFrame mainFrame=new MainFrame();
    }
   public void createInteractors(){
   MyListener listener= new MyListener();
-
-  Panel pnl=new Panel();
   add(pnl, BorderLayout.CENTER);
 
-  pnl.add(add_btn);
-  add_btn.addActionListener(listener);
-
-  pnl.add(view_btn);
-  view_btn.addActionListener(listener);
 }
   public class MyListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
-      if(e.getSource()==add_btn){
+      if(e.getSource()==add){
         dispose();
         AddFrame addFrame = new AddFrame();
         addFrame.setVisible(true);
       }
-      else if(e.getSource()==view_btn){
+      else if(e.getSource()==view){
         dispose();
         ViewFrame viewFrame=new ViewFrame();
         viewFrame.setVisible(true);

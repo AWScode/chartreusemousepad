@@ -3,18 +3,33 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ViewFrame extends JFrame{
-  public static JButton add_btn= new JButton("Add New Expense");
-  public static JButton view_btn= new JButton("View Expenses");
+  JFrame addFrame = new JFrame("Display Expense Window");
 
-  public static void main(String[] args){
-    Expense1Frame frame = new Expense1Frame();
-    frame.createInteractors();
-    frame.setTitle("Main Window");
-    frame.setSize(800,300);
-    frame.setDefaultCloseOperation(Expense1Frame.EXIT_ON_CLOSE);
-    frame.setVisible(true);
+  public ViewFrame(){
+    setSize(800,300);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setVisible(true);
   }
-  public static void createInteractors(){
+  public void createInteractors(){
+  MyListener listener= new MyListener();
+
+  Panel pnl=new Panel();
+  add(pnl, BorderLayout.CENTER);
+
 
   }
+  public class MyListener implements ActionListener{
+    @Override
+    public void actionPerformed(ActionEvent e){
+      dispose();
+      ViewFrame viewFrame = new ViewFrame();
+      viewFrame.setVisible(true);
+      }
+    }
+    public static void main(String[] args){
+       AddFrame addFrame=new AddFrame();
+       Expense1 view = new Expense1();
+       view.displayExpense();
+    }
+
 }

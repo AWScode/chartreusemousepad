@@ -4,8 +4,9 @@ import java.awt.event.*;
 
 public class AddFrame extends JFrame{
   JFrame addFrame = new JFrame("New Expense Window");
-  JTextField add_btn= new JButton("Add New Expense");
-  JButton view_btn= new JButton("View Expenses");
+  JTextField date= new JTextField("Date(MM/DD/YYYY)");
+  JTextField amount= new JTextField("Amount");
+  JTextField address= new JTextField("Address");
 
   public AddFrame(){
     setSize(800,300);
@@ -13,7 +14,7 @@ public class AddFrame extends JFrame{
     setVisible(true);
   }
   public static void main(String[] args){
-     MainFrame mainFrame=new MainFrame();
+     AddFrame addFrame=new AddFrame();
    }
   public void createInteractors(){
   MyListener listener= new MyListener();
@@ -21,24 +22,32 @@ public class AddFrame extends JFrame{
   Panel pnl=new Panel();
   add(pnl, BorderLayout.CENTER);
 
-  pnl.add(add_btn);
-  add_btn.addActionListener(listener);
+  pnl.add(date);
+  date.addActionListener(listener);
 
-  pnl.add(view_btn);
-  view_btn.addActionListener(listener);
+  pnl.add(amount);
+  amount.addActionListener(listener);
+
+  pnl.add(address);
+  address.addActionListener(listener);
 }
   public class MyListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
-      if(e.getSource()==add_btn){
+      if(e.getSource()==date){
         dispose();
         AddFrame addFrame = new AddFrame();
         addFrame.setVisible(true);
       }
-      else if(e.getSource()==view_btn){
+      else if(e.getSource()==amount){
         dispose();
-        ViewFrame viewFrame=new ViewFrame();
-        viewFrame.setVisible(true);
+        AddFrame addFrame=new AddFrame();
+        addFrame.setVisible(true);
+      }
+      else if(e.getSource()==address){
+        dispose();
+        AddFrame addFrame=new AddFrame();
+        addFrame.setVisible(true);
       }
     }
   }
