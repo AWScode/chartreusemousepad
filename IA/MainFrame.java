@@ -4,32 +4,28 @@ import java.awt.event.*;
 
 public class MainFrame extends JFrame{
   JFrame mainFrame = new JFrame("Main Window");
-  JButton add;
-  JButton view;
-  JPanel pnl;
+  JButton add = new JButton("Add New Expense");
+  JButton view = new JButton("View Expenses");
 
   public MainFrame(){
     setTitle("Main Window");
     setSize(300,150);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
-    this.add = new JButton("Add New Expense");
-    this.view = new JButton("View Expenses");
-    this.pnl = new JPanel();
-  }
-  public void setPnl(){
-    pnl.add(add);
-    //add.addActionListener(listener);
-    pnl.add(view);
-    //view.addActionListener(listener);
   }
   public static void main(String[] args){
      MainFrame mainFrame=new MainFrame();
    }
   public void createInteractors(){
   MyListener listener= new MyListener();
+  JPanel pnl = new JPanel();
   add(pnl, BorderLayout.CENTER);
 
+  pnl.add(add);
+  add.addActionListener(listener);
+
+  pnl.add(view);
+  view.addActionListener(listener);
 }
   public class MyListener implements ActionListener{
     @Override
